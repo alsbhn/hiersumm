@@ -308,7 +308,7 @@ class Translator(object):
             topk_log_probs = topk_scores * length_penalty
 
             # Resolve beam origin and true word ids.
-            topk_beam_index = topk_ids.div(vocab_size)
+            topk_beam_index = topk_ids.div(vocab_size , rounding_mode='trunc')
             topk_ids = topk_ids.fmod(vocab_size)
 
             # Map beam_index to batch_index in the flat representation.
